@@ -95,7 +95,7 @@
                     ->setAutoSize(true);
             }
 
-            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
             $objWriter->save($filePath);
             $objPHPExcel->disconnectWorksheets();
             unset($objPHPExcel);
@@ -111,8 +111,8 @@
         * @return ExcelWrapper
         */
         public function outputToBrowser($fileName){
-            header('Content-Type: application/vnd.ms-excel');
-            header('Content-Disposition: attachment;filename="' . $fileName . '"');
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename="' . $fileName);
             header('Cache-Control: max-age=0');
 
             //Use the save method on php's output stream
